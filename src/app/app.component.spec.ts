@@ -4,9 +4,7 @@ import { AppComponent } from './app.component';
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
+      declarations: [AppComponent],
     }).compileComponents();
   });
 
@@ -16,16 +14,19 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'SmallestNumber'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('SmallestNumber');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('SmallestNumber app is running!');
+  [
+    { input: '1,2,    3', expected: 'The minumum number is 1' },
+    { input: '2,-3,1', expected: 'The minumum number is -3' },
+    {
+      input: 'sample',
+      expected: 'The entered string has some non numerical data',
+    },
+  ].forEach((item) => {
+    it(`if input is ${item.input} value expected is ${item.expected}`, () => {
+      const fixture = TestBed.createComponent(AppComponent);
+      const app = fixture.componentInstance;
+      app.findSmall(item.input);
+      expect(app.output).toEqual(item.expected);
+    });
   });
 });
