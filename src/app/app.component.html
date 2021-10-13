@@ -1,5 +1,48 @@
-<input #newText />
-
-<button (click)="findSmall(newText.value)">Find Small</button>
-<br />
-{{ output }}
+<div class="w-full flex flex-col items-center justify-center">
+  <div class="p-10">
+    <h1 class="text-xl">Find the Smallest number</h1>
+  </div>
+  <div class="p-2 w-1/2 items-center justify-center">
+    <input
+      #newText
+      placeholder="Enter comma separated numbers"
+      class="
+        px-3
+        py-3
+        placeholder-blueGray-300
+        text-blueGray-600
+        relative
+        bg-white bg-white
+        rounded
+        text-sm
+        border-0
+        shadow
+        outline-none
+        focus:outline-none focus:ring
+        w-full
+      "
+    />
+  </div>
+  <div class="p-2">
+    <button
+      (click)="findSmall(newText.value)"
+      class="
+        py-2
+        px-4
+        border border-transparent
+        shadow-sm
+        text-sm
+        font-medium
+        rounded-md
+        text-white
+        bg-red-400
+        w-full
+      "
+    >
+      Find Small
+    </button>
+  </div>
+  <div class="p-2">
+    {{ output }}
+  </div>
+</div>
